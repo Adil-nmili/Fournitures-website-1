@@ -1,5 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @custom-variant dark (&:is(.dark *));
 
@@ -74,6 +77,12 @@
   --sidebar-accent-foreground: oklch(0.216 0.006 56.043);
   --sidebar-border: oklch(0.923 0.003 48.717);
   --sidebar-ring: oklch(0.709 0.01 56.259);
+  --primary: #DD1D25;
+  --secondary: #104C64;
+  --accent: #C6C6D0;
+  --warm1: #D59D80;
+  --warm2: #C0754D;
+  --warm3: #B6410F;
 }
 
 .dark {
@@ -114,7 +123,120 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.bg-based-red {
+  background-color: #DD1D25;
+}
+
+.text-based-red {
+  color: #DD1D25;
+}
+
+.border-based-red {
+  border-color: #DD1D25;
+}
+
+.bg-based-blue {
+  background-color: #104C64;
+}
+
+.text-based-blue {
+  color: #104C64;
+}
+
+.bg-based-light {
+  background-color: #C6C6D0;
+}
+
+/* Wood tones */
+.bg-based-wood-light {
+  background-color: #D59D80;
+}
+
+.bg-based-wood-medium {
+  background-color: #C0754D;
+}
+
+.bg-based-wood-dark {
+  background-color: #B6410F;
+}
+
+
+
+.bg-primary {
+  background-color: var(--primary);
+}
+
+.bg-secondary {
+  background-color: var(--secondary);
+}
+
+.bg-accent {
+  background-color: var(--accent);
+}
+
+.bg-warm1 {
+  background-color: var(--warm1);
+}
+
+.bg-warm2 {
+  background-color: var(--warm2);
+}
+
+.bg-warm3 {
+  background-color: var(--warm3);
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.text-secondary {
+  color: var(--secondary);
+}
+
+.text-warm1 {
+  color: var(--warm1);
+}
+
+.text-warm2 {
+  color: var(--warm2);
+}
+
+.text-warm3 {
+  color: var(--warm3);
+}
+
+.border-primary {
+  border-color: var(--primary);
+}
+
+.border-secondary {
+  border-color: var(--secondary);
+}
+
+.border-warm2 {
+  border-color: var(--warm2);
+}
+
+.animate-in {
+  opacity: 1 !important;
+  transform: translateY(0) translateX(0) !important;
+}
+
+.animate-on-scroll {
+  transition: all 1s ease-out;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #f8f9fa 0%, var(--accent) 50%, var(--warm1) 100%);
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, var(--warm1) 0%, #fff 50%, var(--accent) 100%);
 }
