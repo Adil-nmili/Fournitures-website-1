@@ -1,12 +1,13 @@
 import { Menu, Search, ShoppingCart, User } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 export default function Navigation() {
     return (
-        <header className="bg-based-blue text-white">
+        <header className="bg-based-blue text-white relative">
             <header className="bg-secondary text-white py-3">
-                <div className="container mx-auto px-4 text-center text-sm">
+                <p className="container mx-auto px-4 text-center text-xs text-gray-200">
                     Free Shipping On Orders Over $299. Premium Comfort & Luxury Furniture
-                </div>
+                </p>
             </header>
 
             {/* Navigation */}
@@ -18,19 +19,19 @@ export default function Navigation() {
                     </div>
 
                     <div className="hidden md:flex items-center space-x-8">
-                        <a href="#" className="hover:text-primary transition-colors font-medium text-secondary">HOME</a>
-                        <a href="#" className="hover:text-primary transition-colors font-medium text-secondary">PAGES</a>
-                        <a href="#" className="hover:text-primary transition-colors font-medium text-secondary">COLLECTIONS</a>
-                        <a href="#" className="hover:text-primary transition-colors font-medium text-secondary">SHOP</a>
-                        <a href="#" className="hover:text-primary transition-colors font-medium text-secondary">BLOG</a>
-                        <a href="#" className="hover:text-primary transition-colors font-medium text-secondary">CONTACTS</a>
+                        <Link to={'#'} className="hover:text-primary transition-colors font-medium text-sm text-secondary">HOME</Link>
+                        <Link to={'#'} className="hover:text-primary transition-colors font-medium text-sm text-secondary">PAGES</Link>
+                        <Link to={'#'} className="hover:text-primary transition-colors font-medium text-sm text-secondary">COLLECTIONS</Link>
+                        <Link to={'#'} className="hover:text-primary transition-colors font-medium text-sm text-secondary">SHOP</Link>
+                        <Link to={'#'} className="hover:text-primary transition-colors font-medium text-sm text-secondary">BLOG</Link>
+                        <Link to={'#'} className="hover:text-primary transition-colors font-medium text-sm text-secondary">CONTACTS</Link>
                     </div>
 
                     <div className="flex items-center space-x-4">
-                        <Search className="w-5 h-5 cursor-pointer hover:text-primary transition-colors" />
-                        <User className="w-5 h-5 cursor-pointer hover:text-primary transition-colors" />
-                        <ShoppingCart className="w-5 h-5 cursor-pointer hover:text-primary transition-colors" />
-                        <Menu className="w-5 h-5 md:hidden cursor-pointer" />
+                        <Search className="w-5 h-5 text-black cursor-pointer hover:text-primary transition-colors" />
+                        <User className="w-5 h-5 text-black cursor-pointer hover:text-primary transition-colors" />
+                        <ShoppingCart className="w-5 h-5 text-black cursor-pointer hover:text-primary transition-colors" />
+                        <Menu className="w-5 h-5 md:hidden text-black cursor-pointer" />
                     </div>
                 </div>
             </nav>

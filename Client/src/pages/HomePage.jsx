@@ -1,16 +1,19 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { ShoppingCart, User, Search, Menu, Star, ChevronLeft, ChevronRight, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import CountUp from 'react-countup';
+import Countdown from 'react-countdown';
 
-const Homepage = () => {
+const HomePage = () => {
   const heroRef = useRef(null);
   const statsRef = useRef(null);
   const categoriesRef = useRef(null);
   const modernSectionRef = useRef(null);
   const dealsRef = useRef(null);
   const premiumRef = useRef(null);
+   const targetDate = Date.now() + (3 * 24 * 60 * 60 * 1000);
 
   useEffect(() => {
     // Animation on scroll functionality
@@ -43,57 +46,38 @@ const Homepage = () => {
 
 
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
-      <section className="relative hero-gradient min-h-screen flex items-center">
+    <div className="min-h-screen bg-white overflow-x-hidden ">
+      <section className="relative hero-gradient min-h-screen flex items-start">
         <div 
           ref={heroRef}
           className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center opacity-0 transform translate-y-8 transition-all duration-1000 ease-out"
         >
           <div className="space-y-8">
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
-                <div className="w-6 h-6 bg-primary rounded-full animate-pulse"></div>
+            <div className="flex items-center space-x-2">
+              <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center shadow-lg">
+                <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
               </div>
               <Badge variant="outline" className="border-secondary text-secondary font-medium">
                 PREMIUM FURNITURE
               </Badge>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold text-secondary leading-tight">
+            <h1 className="text-3xl md:text-5xl font-bold text-secondary leading-tight">
               We Take <span className="text-primary">Furniture</span><br />
               Making Seriously
             </h1>
             
-            <p className="text-secondary/80 text-lg max-w-lg">
+            <p className="text-secondary/80 text-sm max-w-lg">
               We believe in the power of good furniture to change the way we live and feel. 
               It's more than wood and metal, it's an integral part of home.
             </p>
             
             <Button 
               size="lg" 
-              className="bg-warm2 hover:bg-warm3 text-white px-8 py-6 text-lg font-medium transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="bg-warm2 hover:bg-warm3 text-white px-6 py-3  font-medium transform hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
             >
               View Our Collection
             </Button>
-
-            {/* Stats */}
-            <div 
-              ref={statsRef}
-              className="flex space-x-12 pt-8 opacity-0 transform translate-x-8 transition-all duration-1000 ease-out delay-300"
-            >
-              <div>
-                <div className="text-3xl font-bold text-secondary">25K+</div>
-                <div className="text-sm text-secondary/70">Furniture And<br />Decor Product</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-secondary">15K</div>
-                <div className="text-sm text-secondary/70">Happy Customer<br />Design Solution</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-secondary">50K+</div>
-                <div className="text-sm text-secondary/70">Awards Of International<br />Design Excellence</div>
-              </div>
-            </div>
           </div>
 
           <div className="relative">
@@ -101,10 +85,10 @@ const Homepage = () => {
               <img 
                 src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=600&fit=crop" 
                 alt="Luxury Chair" 
-                className="w-full max-w-lg mx-auto rounded-2xl shadow-2xl"
+                className="w-[450px] max-w-lg mx-auto rounded-xl shadow-xl"
               />
             </div>
-            <div className="absolute top-4 right-4 bg-white rounded-full p-4 shadow-lg animate-bounce">
+            <div className="absolute top-4 right-4 bg-white rounded-full z-20 p-4 shadow-lg animate-bounce">
               <div className="text-center">
                 <Star className="w-6 h-6 text-primary mx-auto fill-current" />
                 <div className="text-xs text-secondary mt-1">Premium</div>
@@ -113,17 +97,22 @@ const Homepage = () => {
           </div>
         </div>
 
-        {/* Floating Chair Feature */}
-        <Card className="absolute bottom-8 left-8 max-w-sm transform hover:scale-105 transition-transform duration-300 bg-secondary text-white border-0">
+       
+      </section>
+
+      <section className='py-24  bg-[url(/lamps.jpg)] bg-center bg-cover bg-fixed'>
+      <div className="flex items-center container mx-auto px-4">
+ {/* Floating Chair Feature */}
+        <Card className=" max-w-lg transform hover:scale-105 transition-transform duration-300 bg-secondary/90 text-white border-0">
           <CardContent className="p-6">
             <div className="flex items-center space-x-4">
               <img 
                 src="https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=80&h=80&fit=crop" 
                 alt="Tokyo Long Sleeve" 
-                className="w-16 h-16 rounded-lg object-cover"
+                className="w-32 h-24 rounded-md object-cover"
               />
               <div>
-                <h3 className="font-semibold text-white">Tokyo Long Sleeve</h3>
+                <h3 className="font-semibold text-lg text-white">Tokyo Long Sleeve</h3>
                 <div className="text-primary flex mt-1">
                   {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-current" />)}
                 </div>
@@ -134,18 +123,37 @@ const Homepage = () => {
             </div>
           </CardContent>
         </Card>
+        {/* Stats */}
+            <div 
+              ref={statsRef}
+              className="flex space-x-12 flex-1 justify-center  pt-8 opacity-0 transform translate-x-8 transition-all duration-1000 ease-out delay-300"
+            >
+              <div>
+                <div className="text-3xl font-bold text-gray-300"><CountUp end={100} duration={5} />K+</div>
+                <div className="text-sm text-gray-300/70">Furniture And<br />Decor Product</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-gray-300"><CountUp end={15} duration={5} />K</div>
+                <div className="text-sm text-gray-300/70">Happy Customer<br />Design Solution</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-gray-300"><CountUp end={50} duration={5} />K+</div>
+                <div className="text-sm text-gray-300/70">Awards Of International<br />Design Excellence</div>
+              </div>
+            </div>
+            </div>
       </section>
 
       {/* Shop By Category */}
-      <section className="py-20 bg-white">
+      <section className="py-10 bg-white flex items-center">
         <div className="container mx-auto px-4">
           <div 
             ref={categoriesRef}
-            className="animate-on-scroll opacity-0 transform translate-y-8 transition-all duration-1000"
+            className="animate-on-scroll opacity-0 transform  transition-all duration-1000"
           >
             <div className="flex justify-between items-center mb-12">
               <div>
-                <h2 className="text-4xl font-bold text-secondary mb-4">Shop By Category</h2>
+                <h2 className="text-4xl font-bold text-secondary mb-1">Shop By Category</h2>
                 <p className="text-secondary/70">Transform your space with our collection of premium, quality furniture.</p>
               </div>
               <div className="flex space-x-2">
@@ -223,15 +231,15 @@ const Homepage = () => {
       </section>
 
       {/* Deals Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[url(/bed-1.jpg)] bg-norepeat bg-cover bg-center bg-fixed">
         <div className="container mx-auto px-4">
           <div 
             ref={dealsRef}
             className="text-center animate-on-scroll opacity-0 transform translate-y-8 transition-all duration-1000"
           >
-            <h2 className="text-4xl font-bold text-secondary mb-8">DEALS EXPIRE SOON!</h2>
+            <h2 className="text-4xl font-bold text-black underline mb-8">DEALS EXPIRE SOON!</h2>
             <div className="flex justify-center space-x-8 text-center">
-              {[
+              {/* {[
                 { value: "02", label: "Days" },
                 { value: "05", label: "Hours" },
                 { value: "33", label: "Mins" },
@@ -243,7 +251,8 @@ const Homepage = () => {
                     <div className="text-sm text-gray-300">{time.label}</div>
                   </CardContent>
                 </Card>
-              ))}
+              ))} */}
+               <Countdown  date={targetDate} renderer={renderer}/>
             </div>
           </div>
         </div>
@@ -341,4 +350,40 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default HomePage;
+
+
+
+// Custom renderer for countdown
+const renderer = ({ days, hours, minutes, seconds, completed }) => {
+  if (completed) {
+    return (
+      <Card className="bg-based-red text-white border-0 min-w-16">
+        <CardContent className="">
+          <div className="text-xl font-bold">00</div>
+          <div className="text-sm text-white/80">Sale Ended</div>
+        </CardContent>
+      </Card>
+    );
+  } else {
+    return (
+      <div className="flex justify-center space-x-8 text-center">
+        {[
+          { value: days, label: "Days" },
+          { value: hours, label: "Hours" },
+          { value: minutes, label: "Mins" },
+          { value: seconds, label: "Secs" }
+        ].map((time) => (
+          <Card key={time.label} className="bg-secondary text-white border-0 min-w-16 py-2">
+            <CardContent className="">
+              <div className="text-2xl font-bold">
+                {String(time.value).padStart(2, '0')}
+              </div>
+              <div className="text-sm text-gray-300">{time.label}</div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    );
+  }
+};
